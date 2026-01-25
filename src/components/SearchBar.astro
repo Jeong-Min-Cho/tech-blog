@@ -1,0 +1,78 @@
+---
+---
+
+<button
+  id="search-btn"
+  class="flex w-full items-center gap-2 rounded border border-skin-line bg-skin-card px-3 py-2 text-sm text-skin-muted hover:border-skin-accent"
+>
+  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+  </svg>
+  <span class="flex-1 text-left">Search posts...</span>
+  <kbd class="hidden sm:inline text-xs bg-skin-fill px-1.5 py-0.5 rounded">Ctrl+K</kbd>
+</button>
+
+<div id="search-modal" class="fixed inset-0 z-50 hidden">
+  <div class="fixed inset-0 bg-skin-fill/80" id="search-backdrop"></div>
+  <div class="fixed inset-x-4 top-20 mx-auto max-w-xl">
+    <div class="rounded-lg border border-skin-line bg-skin-fill shadow-lg p-4">
+      <div id="pagefind"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let loaded = false;
+
+  async function loadSearch() {
+    if (loaded) return;
+    const el = document.getElementById('pagefind');
+    if (!el) return;
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/pagefind/pagefind-ui.css';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = () => {
+      // @ts-ignore
+      new PagefindUI({ element: '#pagefind', showImages: false });
+      loaded = true;
+      el.querySelector('input')?.focus();
+    };
+    document.head.appendChild(script);
+  }
+
+  function init() {
+    const btn = document.getElementById('search-btn');
+    const modal = document.getElementById('search-modal');
+    const backdrop = document.getElementById('search-backdrop');
+
+    const open = () => {
+      modal?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      loadSearch();
+    };
+
+    const close = () => {
+      modal?.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+
+    btn?.addEventListener('click', open);
+    backdrop?.addEventListener('click', close);
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        modal?.classList.contains('hidden') ? open() : close();
+      }
+      if (e.key === 'Escape') close();
+    });
+  }
+
+  init();
+  document.addEventListener('astro:after-swap', () => { loaded = false; init(); });
+</script>

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light mode (default) */
+  :root {
+    --color-fill: 251, 254, 251;
+    --color-text-base: 40, 39, 40;
+    --color-text-muted: 107, 114, 128;
+    --color-accent: 0, 108, 172;
+    --color-card: 243, 244, 246;
+    --color-card-hover: 229, 231, 235;
+    --color-border: 229, 231, 235;
+  }
+
+  /* Dark mode */
+  .dark {
+    --color-fill: 23, 23, 23;
+    --color-text-base: 234, 237, 243;
+    --color-text-muted: 156, 163, 175;
+    --color-accent: 96, 165, 250;
+    --color-card: 38, 38, 38;
+    --color-card-hover: 50, 50, 50;
+    --color-border: 55, 55, 55;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-skin-fill text-skin-base font-sans;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-skin-accent/20 text-skin-base;
+  }
+}
+
+@layer components {
+  /* Focus states */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  /* Prose adjustments */
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose a {
+    @apply text-skin-accent break-words;
+  }
+
+  .prose code {
+    @apply bg-skin-card px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-skin-card border border-skin-line rounded-lg;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-skin-base;
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    @apply scroll-mt-20;
+  }
+
+  .prose hr {
+    @apply border-skin-line;
+  }
+
+  .prose blockquote {
+    @apply border-l-skin-accent;
+  }
+
+  /* TOC active state */
+  .toc-active {
+    @apply text-skin-accent font-medium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
