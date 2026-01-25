@@ -6,6 +6,7 @@ tags: ["Lua", "Obfuscation", "Reverse Engineering", "Security"]
 category: "Reverse Engineering"
 lang: en
 featured: true
+heroImage: "/images/posts/lua-obs/before-decryption.png"
 ---
 
 > **Note:** This is not a tutorial for obfuscation nor deobfuscation. This post is for educational purposes only.
@@ -15,6 +16,8 @@ Recently, before I serve for the military to fulfill my duty as a Korean, I have
 This is not a general deobfuscation that can be applied for everywhere. It is a Lua obfuscation that is used in a specific Lua script. The obfuscation is not strong, but it is enough to make the script unreadable.
 
 ## Introduction
+
+![Lua Language](/images/posts/lua-obs/lua.jpg)
 
 According to Lua's about page, Lua is described as follows:
 
@@ -126,6 +129,8 @@ end
 
 This is the partial script of the chunk. I have deobfuscated the chunk script and found that the chunk script returns a table that maps the keys to the actual keys.
 
+![Structure Explanation](/images/posts/lua-obs/Explain1.png)
+
 ### Matching the Keys
 
 Since we have an access to the Lua environment, we can execute the chunk script and get the mapping functions.
@@ -144,6 +149,12 @@ Now, we have all the necessary information to deobfuscate the script.
 ### Deobfuscation
 
 By using the previous information, we can deobfuscate the inside of each function.
+
+![Before Decryption](/images/posts/lua-obs/before-decryption.png)
+*Before Decryption*
+
+![After Decryption](/images/posts/lua-obs/after-decryption.png)
+*After Decryption*
 
 What I did was to replace the encrypted keys such as `["_ililIIIlIiillIlIlllIlIllIlliIiii"]["IIlilIIIIllliIilIIiilIIlliIIiIIiil"][3]` to actual keys such as `["Entity"]["Parent"]`.
 

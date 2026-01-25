@@ -6,6 +6,7 @@ tags: ["ShieldMod", "Full-Stack", "Architecture", "Debugging", "Best Practices",
 category: "Lessons Learned"
 lang: en
 featured: true
+heroImage: "/images/posts/shieldmod/post-1.png"
 ---
 
 ## 565,528 Lines. 2,721 Commits. 1,060 Bug Fixes. Here's What I Learned.
@@ -175,6 +176,9 @@ scheduler = AsyncIOScheduler()  # Same thread as FastAPI
 scheduler.add_job(cleanup, 'interval', minutes=10)
 ```
 
+![Drake Hotline Bling](/images/posts/shieldmod/post12-creatingneweventloop.jpg)
+*Creating new event loops vs. sharing the main one*
+
 ---
 
 ## Lesson 9: Crypto Formats Vary
@@ -193,6 +197,9 @@ raw_signature = r.to_bytes(32, 'big') + s.to_bytes(32, 'big')
 ```
 
 When signing in one language and verifying in another, **explicitly document the format**.
+
+![Choosing Between DER and Raw](/images/posts/shieldmod/post12-mechoosingbetweender.jpg)
+*Me choosing between DER and raw signature format*
 
 ---
 
@@ -251,6 +258,9 @@ if (isTemporaryError(error)) {
 ```
 
 False terminations dropped from 15% to 0.5% of sessions.
+
+![User Network Issues](/images/posts/shieldmod/post12-User_experiencing_network_issues.png)
+*User experiencing network issues: "First time?"*
 
 ---
 

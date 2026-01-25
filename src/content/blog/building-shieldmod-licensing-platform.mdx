@@ -6,9 +6,13 @@ tags: ["ShieldMod", "SaaS", "FastAPI", "Next.js", "TypeScript", "Python", "C++",
 category: "Full-Stack"
 lang: en
 featured: true
+heroImage: "/images/posts/shieldmod/system-architecture.svg"
 ---
 
 ## The Beginning of a 565,528 Line Journey
+
+![This is Fine](/images/posts/shieldmod/post-1.png)
+*Me, starting this project with "general ideas to implement"*
 
 It's been almost 2 months since I launched ShieldMod in early November - a licensing distribution system for game modding developers. The project is still actively evolving, and before I dive into the technical horror stories (yes, there will be many), let me set the stage for what this project involved.
 
@@ -37,6 +41,8 @@ From the start, I had four core principles:
 4. **Easy to Use** - For developers integrating the system
 
 The platform would need four interconnected components: a frontend dashboard, backend API, desktop client, and client module.
+
+![System Architecture](/images/posts/shieldmod/system-architecture.svg)
 
 ## Action: How I Built It
 
@@ -90,6 +96,8 @@ The JWT system uses short-lived access tokens (15 minutes) and longer refresh to
 #### 2. Secure File Distribution
 
 Files are encrypted server-side with **AES-256-GCM**, and each user gets a unique decryption key derived via **HKDF**.
+
+![File Encryption Flow](/images/posts/shieldmod/file-encryption-flow.svg)
 
 This means:
 - Each user gets a unique decryption key
