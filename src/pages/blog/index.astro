@@ -2,10 +2,18 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostCard from '@components/PostCard.astro';
 import SearchBar from '@components/SearchBar.astro';
+import LanguageFilter from '@components/LanguageFilter.astro';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog', ({ data }) => !data.draft);
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const url = new URL(Astro.request.url);
+const langParam = url.searchParams.get('lang') as 'en' | 'ko' | null;
+const currentLang = langParam || 'all';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const filteredPosts = langParam
+  ? allPosts.filter(post => post.data.lang === langParam)
+  : allPosts;
+const sortedPosts = filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
@@ -14,9 +22,11 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 >
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="text-2xl font-bold text-skin-base mb-2">Posts</h1>
-    <p class="text-skin-muted mb-8">
-      {sortedPosts.length} articles about web development
+    <p class="text-skin-muted mb-6">
+      {sortedPosts.length} article{sortedPosts.length !== 1 ? 's' : ''} about software development
     </p>
+
+    <LanguageFilter currentLang={currentLang} />
 
     <div class="mb-8">
       <SearchBar />
@@ -30,9 +40,15 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
           pubDate={post.data.pubDate}
           slug={post.slug}
           tags={post.data.tags}
-          body={post.body}
+          body={post.body || ''}
         />
       ))}
     </div>
+
+    {sortedPosts.length === 0 && (
+      <p class="text-skin-muted text-center py-12">
+        No posts found for the selected language.
+      </p>
+    )}
   </section>
 </BaseLayout>

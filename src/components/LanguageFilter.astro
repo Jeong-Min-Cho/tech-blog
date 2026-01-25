@@ -1,0 +1,43 @@
+---
+interface Props {
+  currentLang: 'all' | 'en' | 'ko';
+}
+
+const { currentLang } = Astro.props;
+---
+
+<div class="flex gap-2 mb-6">
+  <a
+    href="/blog"
+    class:list={[
+      'px-3 py-1.5 rounded text-sm transition-colors',
+      currentLang === 'all'
+        ? 'bg-skin-accent text-skin-inverted'
+        : 'bg-skin-card text-skin-base hover:bg-skin-card-hover'
+    ]}
+  >
+    All
+  </a>
+  <a
+    href="/blog?lang=en"
+    class:list={[
+      'px-3 py-1.5 rounded text-sm transition-colors',
+      currentLang === 'en'
+        ? 'bg-skin-accent text-skin-inverted'
+        : 'bg-skin-card text-skin-base hover:bg-skin-card-hover'
+    ]}
+  >
+    English
+  </a>
+  <a
+    href="/blog?lang=ko"
+    class:list={[
+      'px-3 py-1.5 rounded text-sm transition-colors',
+      currentLang === 'ko'
+        ? 'bg-skin-accent text-skin-inverted'
+        : 'bg-skin-card text-skin-base hover:bg-skin-card-hover'
+    ]}
+  >
+    한국어
+  </a>
+</div>

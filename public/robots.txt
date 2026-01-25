@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://techtales.dev/sitemap-index.xml
+Sitemap: https://blog.jeongmincho.dev/sitemap-index.xml
