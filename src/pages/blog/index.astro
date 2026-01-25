@@ -2,10 +2,11 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostCard from '@components/PostCard.astro';
 import SearchBar from '@components/SearchBar.astro';
+import LanguageFilter from '@components/LanguageFilter.astro';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog', ({ data }) => !data.draft);
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
@@ -14,15 +15,15 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 >
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="text-2xl font-bold text-skin-base mb-2">Posts</h1>
-    <p class="text-skin-muted mb-8">
-      {sortedPosts.length} articles about web development
+    <p id="posts-count" class="text-skin-muted mb-6">
+      {sortedPosts.length} article{sortedPosts.length !== 1 ? 's' : ''} about software development
     </p>
 
-    <div class="mb-8">
-      <SearchBar />
-    </div>
+    <LanguageFilter />
 
-    <div class="divide-y divide-skin-line border-t border-b border-skin-line">
+    <SearchBar />
+
+    <div id="posts-list" class="divide-y divide-skin-line border-t border-b border-skin-line">
       {sortedPosts.map((post) => (
         <PostCard
           title={post.data.title}
@@ -30,9 +31,14 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
           pubDate={post.data.pubDate}
           slug={post.slug}
           tags={post.data.tags}
-          body={post.body}
+          body={post.body || ''}
+          lang={post.data.lang}
         />
       ))}
     </div>
+
+    <p id="no-posts-message" class="text-skin-muted text-center py-12 hidden">
+      No posts found for the selected language.
+    </p>
   </section>
 </BaseLayout>

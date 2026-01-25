@@ -1,0 +1,129 @@
+---
+interface Props {
+  currentLang?: 'all' | 'en' | 'ko';
+}
+
+const { currentLang = 'all' } = Astro.props;
+---
+
+<div class="flex gap-2 mb-6" id="language-filter">
+  <button
+    type="button"
+    data-lang="all"
+    class:list={[
+      'lang-btn px-3 py-1.5 rounded text-sm transition-colors',
+      currentLang === 'all'
+        ? 'bg-skin-accent text-skin-inverted'
+        : 'bg-skin-card text-skin-base hover:bg-skin-card-hover'
+    ]}
+  >
+    All
+  </button>
+  <button
+    type="button"
+    data-lang="en"
+    class:list={[
+      'lang-btn px-3 py-1.5 rounded text-sm transition-colors',
+      currentLang === 'en'
+        ? 'bg-skin-accent text-skin-inverted'
+        : 'bg-skin-card text-skin-base hover:bg-skin-card-hover'
+    ]}
+  >
+    English
+  </button>
+  <button
+    type="button"
+    data-lang="ko"
+    class:list={[
+      'lang-btn px-3 py-1.5 rounded text-sm transition-colors',
+      currentLang === 'ko'
+        ? 'bg-skin-accent text-skin-inverted'
+        : 'bg-skin-card text-skin-base hover:bg-skin-card-hover'
+    ]}
+  >
+    한국어
+  </button>
+</div>
+
+<script>
+  function initLanguageFilter() {
+    const buttons = document.querySelectorAll('.lang-btn');
+    const postsList = document.getElementById('posts-list');
+    const postsCount = document.getElementById('posts-count');
+    const noPostsMessage = document.getElementById('no-posts-message');
+
+    if (!buttons.length || !postsList) return;
+
+    const posts = postsList.querySelectorAll('[data-lang]');
+
+    function updateFilter(lang: string) {
+      let visibleCount = 0;
+
+      posts.forEach((post) => {
+        const postLang = post.getAttribute('data-lang');
+        const shouldShow = lang === 'all' || postLang === lang;
+
+        if (shouldShow) {
+          (post as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (post as HTMLElement).style.display = 'none';
+        }
+      });
+
+      // Update button styles
+      buttons.forEach((btn) => {
+        const btnLang = btn.getAttribute('data-lang');
+        if (btnLang === lang) {
+          btn.classList.remove('bg-skin-card', 'text-skin-base', 'hover:bg-skin-card-hover');
+          btn.classList.add('bg-skin-accent', 'text-skin-inverted');
+        } else {
+          btn.classList.remove('bg-skin-accent', 'text-skin-inverted');
+          btn.classList.add('bg-skin-card', 'text-skin-base', 'hover:bg-skin-card-hover');
+        }
+      });
+
+      // Update count
+      if (postsCount) {
+        postsCount.textContent = `${visibleCount} article${visibleCount !== 1 ? 's' : ''} about software development`;
+      }
+
+      // Show/hide no posts message
+      if (noPostsMessage) {
+        if (visibleCount === 0) {
+          noPostsMessage.classList.remove('hidden');
+          postsList.classList.add('hidden');
+        } else {
+          noPostsMessage.classList.add('hidden');
+          postsList.classList.remove('hidden');
+        }
+      }
+
+      // Update URL without reload
+      const url = new URL(window.location.href);
+      if (lang === 'all') {
+        url.searchParams.delete('lang');
+      } else {
+        url.searchParams.set('lang', lang);
+      }
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang') || 'all';
+        updateFilter(lang);
+      });
+    });
+
+    // Check URL for initial filter
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialLang = urlParams.get('lang') || 'all';
+    if (initialLang !== 'all') {
+      updateFilter(initialLang);
+    }
+  }
+
+  initLanguageFilter();
+  document.addEventListener('astro:after-swap', initLanguageFilter);
+</script>

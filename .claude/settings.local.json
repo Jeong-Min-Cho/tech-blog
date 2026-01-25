@@ -5,7 +5,21 @@
       "Bash(npm install)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix MDX parsing error in HWID debugging post\n\nRemove C++ float suffix ''f'' from 0.75f that was being\nincorrectly parsed as JSX syntax.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nStyle Cusdis comments to match site theme\n\n- Add dynamic dark/light theme detection for Cusdis\n- Observe theme changes and reinitialize Cusdis widget\n- Set data-theme attribute based on dark mode class\n- Add CSS custom properties for Cusdis styling\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "WebFetch(domain:www.jeongmincho.dev)",
+      "WebFetch(domain:barthpaleologue.github.io)",
+      "Bash(npm install:*)",
+      "Bash(npm run test:run:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm update:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
