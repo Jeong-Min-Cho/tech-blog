@@ -140,7 +140,7 @@ bool IsValidHWID(const std::string& stored, const std::string& current) {
 
     // Allow if 3 of 4 components match (75%+)
     // Handles: single component change (e.g., Windows reinstall)
-    return CalculateHWIDSimilarity(stored, current) >= 0.75f;
+    return CalculateHWIDSimilarity(stored, current) >= 0.75;
 }
 ```
 

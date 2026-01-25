@@ -10,13 +10,13 @@ const recentPosts = sortedPosts.slice(0, 5);
 ---
 
 <BaseLayout
-  title="Tech Tales"
+  title="Jeong Min Cho's Tech Blog"
   description="A personal tech blog about software development, debugging stories, and lessons learned."
 >
   <section class="mx-auto max-w-3xl px-4 py-12">
     <div class="mb-12">
       <h1 class="text-3xl font-bold text-skin-base mb-4">
-        Tech Tales
+        Jeong Min Cho's Tech Blog
       </h1>
       <p class="text-skin-muted max-w-xl">
         Stories from the trenches of software development. Full-stack adventures,
@@ -38,6 +38,7 @@ const recentPosts = sortedPosts.slice(0, 5);
               slug={post.slug}
               tags={post.data.tags}
               body={post.body || ''}
+              lang={post.data.lang}
             />
           ))}
         </div>
@@ -57,6 +58,7 @@ const recentPosts = sortedPosts.slice(0, 5);
             slug={post.slug}
             tags={post.data.tags}
             body={post.body || ''}
+            lang={post.data.lang}
           />
         ))}
       </div>

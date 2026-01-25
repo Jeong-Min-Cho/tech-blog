@@ -5,15 +5,8 @@ import SearchBar from '@components/SearchBar.astro';
 import LanguageFilter from '@components/LanguageFilter.astro';
 import { getCollection } from 'astro:content';
 
-const url = new URL(Astro.request.url);
-const langParam = url.searchParams.get('lang') as 'en' | 'ko' | null;
-const currentLang = langParam || 'all';
-
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const filteredPosts = langParam
-  ? allPosts.filter(post => post.data.lang === langParam)
-  : allPosts;
-const sortedPosts = filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
@@ -22,17 +15,15 @@ const sortedPosts = filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.da
 >
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="text-2xl font-bold text-skin-base mb-2">Posts</h1>
-    <p class="text-skin-muted mb-6">
+    <p id="posts-count" class="text-skin-muted mb-6">
       {sortedPosts.length} article{sortedPosts.length !== 1 ? 's' : ''} about software development
     </p>
 
-    <LanguageFilter currentLang={currentLang} />
+    <LanguageFilter />
 
-    <div class="mb-8">
-      <SearchBar />
-    </div>
+    <SearchBar />
 
-    <div class="divide-y divide-skin-line border-t border-b border-skin-line">
+    <div id="posts-list" class="divide-y divide-skin-line border-t border-b border-skin-line">
       {sortedPosts.map((post) => (
         <PostCard
           title={post.data.title}
@@ -41,14 +32,13 @@ const sortedPosts = filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.da
           slug={post.slug}
           tags={post.data.tags}
           body={post.body || ''}
+          lang={post.data.lang}
         />
       ))}
     </div>
 
-    {sortedPosts.length === 0 && (
-      <p class="text-skin-muted text-center py-12">
-        No posts found for the selected language.
-      </p>
-    )}
+    <p id="no-posts-message" class="text-skin-muted text-center py-12 hidden">
+      No posts found for the selected language.
+    </p>
   </section>
 </BaseLayout>

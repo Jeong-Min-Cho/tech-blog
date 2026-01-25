@@ -2,7 +2,7 @@
   "name": "tech-tales",
   "type": "module",
   "version": "1.0.0",
-  "description": "Tech Tales - A modern tech blog built with Astro",
+  "description": "Jeong Min Cho's Tech Blog - A modern tech blog built with Astro",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

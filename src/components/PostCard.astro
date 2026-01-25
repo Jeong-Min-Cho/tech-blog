@@ -9,13 +9,14 @@ interface Props {
   slug: string;
   tags?: string[];
   body?: string;
+  lang?: 'en' | 'ko';
 }
 
-const { title, description, pubDate, slug, tags = [], body = '' } = Astro.props;
+const { title, description, pubDate, slug, tags = [], body = '', lang = 'en' } = Astro.props;
 const readingTime = getReadingTime(body);
 ---
 
-<article class="py-6 border-b border-skin-line last:border-b-0">
+<article class="py-6 border-b border-skin-line last:border-b-0" data-lang={lang}>
   <a href={`/blog/${slug}`} class="group">
     <h2 class="text-lg font-medium text-skin-base group-hover:text-skin-accent">
       {title}
