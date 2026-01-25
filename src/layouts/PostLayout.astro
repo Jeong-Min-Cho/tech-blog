@@ -3,7 +3,6 @@ import BaseLayout from './BaseLayout.astro';
 import { formatDate, formatDateISO } from '@utils/formatDate';
 import { getReadingTime } from '@utils/readingTime';
 import TableOfContents from '@components/TableOfContents.astro';
-import Comments from '@components/Comments.astro';
 import CodeCopy from '@components/CodeCopy.astro';
 
 interface Props {
@@ -81,7 +80,6 @@ const readingTime = getReadingTime(body);
       </nav>
     )}
 
-    <Comments pageId={slug} pageTitle={title} />
   </article>
 
   <CodeCopy />
