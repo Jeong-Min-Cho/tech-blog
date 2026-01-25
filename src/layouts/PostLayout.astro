@@ -10,6 +10,7 @@ interface Props {
   description: string;
   pubDate: Date;
   updatedDate?: Date;
+  heroImage?: string;
   tags?: string[];
   body: string;
   headings: { depth: number; slug: string; text: string }[];
@@ -18,13 +19,14 @@ interface Props {
   nextPost?: { slug: string; title: string } | null;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], body, headings, slug, prevPost, nextPost } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags = [], body, headings, slug, prevPost, nextPost } = Astro.props;
 const readingTime = getReadingTime(body);
 ---
 
 <BaseLayout
   title={title}
   description={description}
+  image={heroImage}
   article={{ publishedTime: formatDateISO(pubDate), modifiedTime: updatedDate ? formatDateISO(updatedDate) : undefined, tags }}
 >
   <article class="mx-auto max-w-3xl px-4 py-12">
