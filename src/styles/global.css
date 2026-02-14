@@ -84,7 +84,11 @@
 
   /* Figure captions */
   .prose figure {
-    @apply my-6;
+    @apply my-6 text-center;
+  }
+
+  .prose figure img {
+    @apply mx-auto;
   }
 
   .prose figcaption {
