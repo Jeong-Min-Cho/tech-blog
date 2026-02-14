@@ -93,3 +93,29 @@
     text-wrap: balance;
   }
 }
+
+/* KaTeX math rendering */
+.katex {
+  color: rgb(var(--color-text-base));
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+.prose .katex-display > .katex {
+  text-align: left;
+}
+
+/* Prevent prose code styles from affecting KaTeX */
+.prose .katex code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose .katex .base {
+  display: inline;
+}
