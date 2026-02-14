@@ -11,7 +11,7 @@ heroImage: "/images/posts/sandwich-theory/hero.jpg"
 
 ## Abstract
 
-The concept of "sandwich" resists formal definition. This paper surveys several attempts to provide necessary and sufficient conditions for the category (including naive structural definitions, geometric classification schemes, topological invariants, and category-theoretic frameworks) and demonstrates that each fails to simultaneously satisfy completeness, consistency, continuity, and alignment with human intuition. We formalize this impossibility as a consequence of the sorites paradox applied to culinary taxonomy and propose a fuzzy membership model as the least unsatisfying alternative. The result has implications for the general problem of natural kind classification under vagueness.
+The concept of "sandwich" resists formal definition. This paper surveys several attempts to provide necessary and sufficient conditions for the category, including naive structural definitions, geometric classification schemes, legal and regulatory stipulations, topological invariants, and category-theoretic frameworks, and demonstrates that each fails to simultaneously satisfy completeness, consistency, continuity, and alignment with human intuition. We identify the sorites paradox as the underlying obstacle, propose a continuous sandwichness function as the least unsatisfying alternative, and draw a structural analogy to Gödel's incompleteness theorems. The main result (Theorem 11.1) proves that no definition of "sandwich" can be simultaneously complete, consistent, continuous, and intuitively aligned. The argument has implications for the general problem of natural kind classification under vagueness.
 
 ## 1. Introduction
 
@@ -19,7 +19,7 @@ The question "what is a sandwich?" appears trivial. The prototypical sandwich, s
 
 The sandwich classification problem has received attention in legal [<a href="#ref-2">2</a>], culinary [<a href="#ref-3">3</a>], and popular scientific [<a href="#ref-4">4</a>] contexts, but has not, to the author's knowledge, been subjected to a unified formal analysis. This paper aims to fill that gap.
 
-We proceed as follows. Section 2 examines and refutes the naive definition. Section 3 introduces a structural formalization. Section 4 surveys the Cube Rule geometric classification. Section 5 reviews relevant legal precedent. Section 6 applies topological methods. Section 7 attempts a category-theoretic approach. Section 8 identifies the underlying sorites structure. Section 9 proposes a continuous alternative. Section 10 draws an analogy to formal incompleteness. Section 11 states and proves the main result.
+We proceed as follows. Section 2 examines and refutes the naive definition. Section 3 introduces a structural formalization. Section 4 surveys the Cube Rule geometric classification. Section 5 reviews relevant legal precedent. Section 6 applies topological methods. Section 7 attempts a category-theoretic approach. Section 8 identifies the underlying sorites structure. Section 9 proposes a continuous alternative. Section 10 draws an analogy to formal incompleteness. Section 11 states and proves the main impossibility result. Section 12 concludes.
 
 ## 2. The Naive Definition
 
@@ -27,20 +27,23 @@ The most commonly offered definition is the following:
 
 > **Definition 2.1 (Naive).** A sandwich is a food item consisting of a filling placed between two pieces of bread.
 
-Definition 2.1 is immediately refuted by three well-known counterexamples.
+Definition 2.1 is immediately refuted by three well-known counterexamples. The range of positions one might hold is illustrated by the Sandwich Alignment Chart (Figure 1).
 
 **Counterexample 2.2 (Open-faced sandwich).** The Danish *smørrebrød* consists of a single slice of bread topped with various ingredients [<a href="#ref-5">5</a>]. It is universally referred to as an "open-faced sandwich," yet it possesses only one piece of bread, violating Definition 2.1.
 
-![The Sandwich Alignment Chart, a taxonomy of sandwich radicalism](/images/posts/sandwich-theory/alignment-chart.jpg)
-*Figure 1. The Sandwich Alignment Chart. One's position reveals deeply held ontological commitments.*
+<figure>
+<img src="/images/posts/sandwich-theory/alignment-chart.jpg" alt="The Sandwich Alignment Chart, a taxonomy of sandwich radicalism" style="max-width: 600px; width: 100%;" />
+<figcaption>Figure 1. The Sandwich Alignment Chart. One's position reveals deeply held ontological commitments.</figcaption>
+</figure>
 
 **Counterexample 2.3 (Wrap).** A flour tortilla enclosing fillings constitutes a single continuous starch layer with no top-bottom distinction. Major restaurant chains classify wraps as sandwiches for commercial purposes [<a href="#ref-6">6</a>], yet they fail the two-piece requirement.
 
-**Counterexample 2.4 (Hot dog).** A frankfurter in a split bun occupies an indeterminate position. If the bun hinge remains intact, the starch component is a single piece; if it tears, it becomes two pieces. The classification of the item should not depend on incidental structural failure during consumption.
+**Counterexample 2.4 (Hot dog).** A frankfurter in a split bun occupies an indeterminate position (Figure 2). If the bun hinge remains intact, the starch component is a single piece; if it tears, it becomes two pieces. The classification of the item should not depend on incidental structural failure during consumption.
 
+<figure>
 <img src="/images/posts/sandwich-theory/hotdog.jpg" alt="A hot dog, the boundary case that launched a thousand debates" style="max-width: 480px; width: 100%;" />
-
-*Figure 2. The hot dog: a classification boundary case whose sandwich-status remains contested.*
+<figcaption>Figure 2. The hot dog: a classification boundary case whose sandwich-status remains contested.</figcaption>
+</figure>
 
 These counterexamples demonstrate that Definition 2.1 is neither necessary (counterexample 2.2) nor sufficient (one can construct non-sandwich items satisfying it, e.g., two slices of bread enclosing a cell phone) for sandwich membership.
 
@@ -66,7 +69,7 @@ The improvement over Definition 2.1 is modest. The critical predicate $\text{Enc
 
 ## 4. The Cube Rule of Food
 
-The Cube Rule of Food Identification, proposed by @Phosphatide in 2018 [<a href="#ref-4">4</a>], offers a geometric classification scheme. The method models any food item as a rectangular solid with six faces. Each face is classified as starch-bearing or non-starch-bearing, yielding $2^6 = 64$ possible configurations. The non-degenerate configurations reduce to six archetypes:
+The Cube Rule of Food Identification, proposed by @Phosphatide in 2018 [<a href="#ref-4">4</a>], offers a geometric classification scheme. The method models any food item as a rectangular solid with six faces. Each face is classified as starch-bearing or non-starch-bearing, yielding $2^6 = 64$ possible configurations. The non-degenerate configurations reduce to six archetypes (see also Figure 3):
 
 | Starch Configuration | Category | Examples |
 |---|---|---|
@@ -77,8 +80,10 @@ The Cube Rule of Food Identification, proposed by @Phosphatide in 2018 [<a href=
 | All faces except top | Bowl | Bread bowl, pie |
 | All six faces | Calzone | Calzone, dumpling, Hot Pocket |
 
-![The Cube Rule of Food, classifying foods by starch placement](/images/posts/sandwich-theory/cube-rule.jpg)
-*Figure 3. The Cube Rule of Food Identification [<a href="#ref-4">4</a>]. Under this scheme, a hot dog is a taco, a burrito is a calzone, and a Pop-Tart sparks existential crisis.*
+<figure>
+<img src="/images/posts/sandwich-theory/cube-rule.jpg" alt="The Cube Rule of Food, classifying foods by starch placement" style="max-width: 600px; width: 100%;" />
+<figcaption>Figure 3. The Cube Rule of Food Identification [<a href="#ref-4">4</a>]. Under this scheme, a hot dog is a taco, a burrito is a calzone, and a Pop-Tart sparks existential crisis.</figcaption>
+</figure>
 
 The Cube Rule has the virtue of providing a complete classification: every food item receives a category. However, it reveals a deeper problem. The boundaries between categories are not discrete but continuous.
 
@@ -108,7 +113,7 @@ Legal and regulatory definitions resolve the classification problem for their sp
 
 ## 6. Topological Approach
 
-Topology offers a shape-invariant classification method. We define the **genus** of a food item's starch component:
+The preceding sections attempted definitions based on structure (Section 3), geometry (Section 4), and legal stipulation (Section 5). Each failed. We now turn to more abstract mathematical frameworks, beginning with topology, which offers a shape-invariant classification method. We define the **genus** of a food item's starch component:
 
 $$
 g(F) = \text{genus of the starch component of } F
@@ -124,7 +129,7 @@ More critically, the topological approach classifies by shape rather than by "sa
 
 ## 7. Category-Theoretic Approach
 
-We next attempt an algebraic approach. Define a **category** $\mathbf{Sand}$ whose objects are sandwiches and whose morphisms are sandwich-preserving transformations (operations such as adding a topping, removing a layer, or substituting one bread type for another) that map sandwiches to sandwiches.
+If geometric and topological properties fail to distinguish sandwiches, perhaps algebraic structure can. Define a **category** $\mathbf{Sand}$ whose objects are sandwiches and whose morphisms are sandwich-preserving transformations (operations such as adding a topping, removing a layer, or substituting one bread type for another) that map sandwiches to sandwiches.
 
 The category must satisfy:
 
@@ -174,7 +179,9 @@ That is, for any arbitrarily small distance $\epsilon$, there exist two food ite
 
 ## 9. The Sandwich Space
 
-The discontinuity identified in Section 8 motivates a continuous alternative. We define the **sandwichness function**:
+The discontinuity identified in Section 8 motivates a continuous alternative.
+
+> **Definition 9.1 (Sandwichness function).** The **sandwichness function** is defined as:
 
 $$
 \sigma : \mathcal{F} \to [0,1]
@@ -182,7 +189,7 @@ $$
 
 where $\sigma(F)$ represents the degree to which food item $F$ exhibits sandwich-characteristic properties. This formulation replaces the binary classification with a fuzzy membership value [<a href="#ref-13">13</a>].
 
-Representative assignments under this model:
+The following table provides illustrative (not empirically derived) assignments under this model, intended to convey the qualitative behavior of $\sigma$ rather than to assert precise numerical values:
 
 | Food Item | $\sigma(F)$ | Justification |
 |---|---|---|
@@ -197,7 +204,7 @@ The sandwichness function $\sigma$ eliminates the discontinuity problem by const
 
 ## 10. Incompleteness Analogy
 
-We note a structural analogy to Godel's incompleteness theorems [<a href="#ref-15">15</a>]. Consider a formal system $T$ sufficiently expressive to encode statements about food classification. By a diagonal argument analogous to Godel's construction, there exist food items $F$ such that:
+We note a structural analogy to Gödel's incompleteness theorems [<a href="#ref-15">15</a>]. Consider a formal system $T$ sufficiently expressive to encode statements about food classification. By a diagonal argument analogous to Gödel's construction, there exist food items $F$ such that:
 
 > "$F$ is a sandwich if and only if $T$ cannot prove that $F$ is a sandwich."
 
@@ -207,7 +214,7 @@ Such items are **undecidable** within $T$, not due to insufficient information, 
 2. **Inconsistent**: it assigns contradictory classifications to some item, or
 3. **Trivial**: it classifies all items identically.
 
-While this analogy is informal (culinary taxonomy does not satisfy the arithmetic preconditions of Godel's theorems), it captures the essential tension: no non-trivial consistent system can classify all food items [<a href="#ref-15">15</a>, <a href="#ref-16">16</a>].
+While this analogy is informal (culinary taxonomy does not satisfy the arithmetic preconditions of Gödel's theorems), it captures the essential tension: no non-trivial consistent system can classify all food items [<a href="#ref-15">15</a>, <a href="#ref-16">16</a>].
 
 ## 11. Main Result
 
@@ -220,7 +227,7 @@ We now state the central theorem.
 3. *Continuity: for any $\epsilon > 0$, there exists $\delta > 0$ such that $d(F_1, F_2) < \delta$ implies $|\mathcal{S}(F_1) - \mathcal{S}(F_2)| < \epsilon$.*
 4. *Intuitive alignment: $D$ agrees with the majority of competent English speakers on prototypical cases.*
 
-*Proof sketch.* Properties (1) and (2) together require a total function $\mathcal{S}: \mathcal{F} \to \{0, 1\}$. Property (3) requires that $\mathcal{S}$ be continuous. But a continuous function from a connected space to $\{0, 1\}$ (with the discrete topology) must be constant [<a href="#ref-17">17</a>]. A constant function either classifies all items as sandwiches or no items as sandwiches, violating property (4). $\square$
+*Proof sketch.* Properties (1) and (2) together require a total function $\mathcal{S}: \mathcal{F} \to \{0, 1\}$. Property (3) requires that $\mathcal{S}$ be continuous. The food space $\mathcal{F}$, equipped with the metric $d$ from Section 8, is connected (since any two food items can be linked by a continuous path of incremental modifications). But a continuous function from a connected space to $\{0, 1\}$ (with the discrete topology) must be constant [<a href="#ref-9">9</a>, Theorem 23.5]. A constant function either classifies all items as sandwiches or no items as sandwiches, violating property (4). $\square$
 
 **Corollary 11.2.** *Any practical sandwich definition must sacrifice at least one of completeness, consistency, continuity, or intuitive alignment.*
 
@@ -262,8 +269,6 @@ This result is not specific to sandwiches. Any natural language category applied
 
 <p id="ref-14">[14] E. Rosch, "Natural Categories," <em>Cognitive Psychology</em>, vol. 4, no. 3, pp. 328-350, 1973.</p>
 
-<p id="ref-15">[15] K. Godel, "Uber formal unentscheidbare Satze der Principia Mathematica und verwandter Systeme I," <em>Monatshefte fur Mathematik und Physik</em>, vol. 38, pp. 173-198, 1931.</p>
+<p id="ref-15">[15] K. Gödel, "Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I," <em>Monatshefte für Mathematik und Physik</em>, vol. 38, pp. 173-198, 1931.</p>
 
-<p id="ref-16">[16] R. M. Smullyan, <em>Godel's Incompleteness Theorems</em>, Oxford University Press, 1992.</p>
-
-<p id="ref-17">[17] J. R. Munkres, <em>Topology</em>, 2nd ed., Theorem 23.5 (connected spaces and continuous functions), Pearson, 2000.</p>
+<p id="ref-16">[16] R. M. Smullyan, <em>Gödel's Incompleteness Theorems</em>, Oxford University Press, 1992.</p>

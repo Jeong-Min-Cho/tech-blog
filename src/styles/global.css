@@ -82,6 +82,15 @@
     @apply border-l-skin-accent;
   }
 
+  /* Figure captions */
+  .prose figure {
+    @apply my-6;
+  }
+
+  .prose figcaption {
+    @apply text-sm text-skin-muted mt-2 italic;
+  }
+
   /* TOC active state */
   .toc-active {
     @apply text-skin-accent font-medium;
